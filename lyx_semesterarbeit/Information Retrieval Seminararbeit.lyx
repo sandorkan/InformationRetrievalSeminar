@@ -1,0 +1,5652 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass scrreprt
+\begin_preamble
+% verschieden Symbole, Zeichen wie (c), €
+\usepackage{textcomp}
+
+
+
+
+\usepackage{ %a4wide,
+            ellipsis, fixltx2e, mparhack,   %Fehlerkorrektur für Marginalien
+            booktabs, longtable             %schönere Tabellen
+}  
+
+\usepackage[automark]{scrpage2}
+%\automark[chapter]{chapter}
+\clearscrheadfoot
+\ohead{\\\headmark}
+\ihead{\includegraphics[scale=0.25]{pics/en-zhaw-sw.png}}%\pagemark}
+\ofoot[\pagemark]{\pagemark}
+
+
+%Kurzfassung und Abstract (englisch) auf eine Seite
+\renewenvironment{abstract}{
+    \@beginparpenalty\@lowpenalty
+      \begin{center}
+        \normalfont\sectfont\nobreak\abstractname
+        \@endparpenalty\@M
+      \end{center}
+}{
+    \par
+}
+
+
+
+% schönerer Blocksatz!!
+\usepackage{microtype}
+
+\usepackage{ifpdf} % part of the hyperref bundle
+\ifpdf % if pdflatex is used
+
+%set fonts for nicer pdf view
+ \IfFileExists{lmodern.sty}{\usepackage{lmodern}}
+  {\usepackage[scaled=0.92]{helvet}
+    \usepackage{mathptmx}
+    \usepackage{courier} }
+\fi
+
+ % the pages of the TOC are numbered roman
+ % and a pdf-bookmark for the TOC is added
+ \pagenumbering{roman}
+ \let\myTOC\tableofcontents
+ \renewcommand\tableofcontents{
+   %\pdfbookmark[1]{Contents}{}
+   \myTOC
+   \clearpage
+   \pagenumbering{arabic}}
+
+%Bezeichungen anpassen
+%Babelpaket muß zuvor geladen werden
+\usepackage[ngerman]{babel}
+\addto\captionsngerman{ 
+\renewcommand{\figurename}{Abb.}% 
+\renewcommand{\tablename}{Tab.}% 
+\renewcommand{\abstractname}{Kurzfassung}
+%\renewcommand{\nomname}{Abkürzungen}
+}
+
+% Alle Querverweise und URLs als Link darstellen
+% In der PDF-Ausgabe
+ \usepackage[colorlinks=true, bookmarks, bookmarksnumbered, bookmarksopen, bookmarksopenlevel=1,
+  linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,
+  pdfpagelayout=OneColumn, pdfnewwindow=true,
+  pdfstartview=XYZ, plainpages=false, pdfpagelabels,
+  pdfauthor={LyX Team}, pdftex,
+  pdftitle={LyX's Figure, Table, Floats, Notes, and Boxes manual},
+  pdfsubject={LyX-documentation about figures, tables, floats, notes, and boxes},
+  pdfkeywords={LyX, Tables, Figures, Floats, Boxes, Notes}]{hyperref}
+
+%mehr Platz zwischen Überschrift und Tabelle
+\newcommand{\@ldtable}{}
+\let\@ldtable\table
+\renewcommand{\table}{ %
+                 \setlength{\@tempdima}{\abovecaptionskip} %
+                 \setlength{\abovecaptionskip}{\belowcaptionskip} %
+                 \setlength{\belowcaptionskip}{\@tempdima} %
+                 \@ldtable}
+
+\renewcommand*{\chapterheadstartvskip}{\vspace*{-35pt}}
+\end_preamble
+\options pointlessnumbers, abstracton, headsepline
+\use_default_options false
+\maintain_unincluded_children false
+\language ngerman
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\index Stichwortverzeichnis
+\shortcut idx
+\color #008000
+\end_index
+\headsep 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip medskip
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+titlepage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pics/zhaw_byline_sw.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 0.3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\family sans
+\series bold
+\size larger
+Zürcher Hochschule für Angewandte Wissenschaften
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+\series default
+\size default
+
+\begin_inset VSpace 0.2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\family sans
+\series bold
+\size larger
+School of Engineering
+\begin_inset Newline newline
+\end_inset
+
+Departement T - Studiengang Informatik
+\series default
+\size large
+
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+\size default
+
+\begin_inset VSpace 1.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\family sans
+\series bold
+\size huge
+Seminararbeit
+\series default
+\size default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size larger
+Evaluierung der Retrieval-Leistung von Google und Lucene am Beispiel von
+ News-Webseiten
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 3.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\size huge
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vorgelegt von: 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sandro Brunner
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Geissbergstr.
+ 5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8302 Kloten
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Betreuer:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Klaus Wolfertz
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 2.5cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+leere Seite nach dem Titelblatt
+\end_layout
+
+\begin_layout Plain Layout
+dann Aufgabenstellung
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{scrheadings}    %Kopfzeile ein
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{center} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsf{
+\backslash
+textbf{
+\backslash
+large Selbständigkeitserklärung}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{center}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Ich versichere hiermit, dass ich meine Semesterarbeit mit dem Thema
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+
+\family sans
+Evaluierung der Retrieval-Leistung von Google und Lucene am Beispiel von
+ News-Webseiten
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+selbständig verfasst und keine anderen als die unten angegebenen Quellen
+ und Hilfsmittel benutzt habe.
+ Die Arbeit wurde bisher keiner anderen Prüfungsbehörde vorgelegt und auch
+ nicht veröffentlicht.
+\end_layout
+
+\begin_layout Standard
+Die Ergebnisse der Arbeit stehen ausschliesslich dem auf dem Deckblatt angeführt
+en Unternehmen zur Verfügung (Arbeit mit Sperrvermerk).
+\end_layout
+
+\begin_layout Standard
+Mir ist bekannt, dass ich meine Bachelorthesis zusammen mit dieser Erklärung
+ fristgemäss im Sekretariat der ZHAW abzugeben habe.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Zürich, den 11.06.2013
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 1.7cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Unterschrift 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+selectlanguage{ngerman}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Lorem Ipsum.
+ Dies muss angepasst werden
+\end_layout
+
+\begin_layout Abstract
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagestyle{scrheadings}    %Kopfzeile ein
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+selectlanguage{ngerman}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Einleitung
+\end_layout
+
+\begin_layout Section
+
+\shape up
+Ausgangslage
+\end_layout
+
+\begin_layout Standard
+
+\shape up
+Google ist heutzutage eine der am meisten verwendeten Suchmaschinen.
+ Suchabfragen geben nicht selten mehrere Millionen Treffer in Sekundenbruchteile
+n zurück.
+ Google bietet mit Hilfe von sogenannten erweiterten Such-Operatoren die
+ Möglichkeit, Suchen auf bestimmte Webseiten zu beschränken.
+ Dies liefert eine überschaubare Anzahl an Resultaten und sollte es ermöglichen,
+ die Retrieval-Leistung von Google mit der einer anderen Search-Engine zu
+ vergleichen.
+\end_layout
+
+\begin_layout Section
+
+\shape up
+Ziel der Arbeit
+\end_layout
+
+\begin_layout Standard
+
+\shape up
+Das Ziel der Arbeit ist die Beantwortung der Fragen, wie gut die Retrieval-Leist
+ung von Google im Vergleich mit der von Lucene abschneidet sowie ob und
+ wie man diese Leistung verbessern kann.
+ Such-Operationen sollen sich dabei auf einen begrenzten Dokumentenbestand
+ beschränken.
+\end_layout
+
+\begin_layout Section
+
+\shape up
+Aufgabenstellung
+\end_layout
+
+\begin_layout Standard
+
+\shape up
+Im Rahmen dieser Arbeit müssen folgende Aufgaben gelöst werden.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\shape up
+Beschaffung von Dokumenten von Schweizer News-Webseiten mit Hilfe eines
+ Web-Crawlers.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\shape up
+Indizierung der in Punkt 1 beschafften Dokumente mit Hilfe von Lucene.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\shape up
+Definition und Durchführung von Suchabfragen (Queries) mit Google und Lucene.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\shape up
+Vergleich der Retrieval-Leistung von Google und Lucene.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\shape up
+Evaluierung der Möglichkeiten zur Verbesserung der Retrieval-Leistung von
+ Google und Lucene.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\shape up
+Verbesserung der Suchabfragen (Queries) aus Punkt 3 bzw.
+ Indizierung aus Punkt 2 und erneute Durchführung der Suchabfragen mit Hilfe
+ der in Punkt 5 gewonnen Erkenntnisse.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\shape up
+Zusammenfassung der Erkenntnisse der Retrieval-Leistung von Google und Lucene
+ (Stärken / Schwächen, Möglichkeiten zur Verbesserung
+\end_layout
+
+\begin_layout Section
+Erwartete Resultate
+\end_layout
+
+\begin_layout Standard
+Aufgrund der Aufgabenstellung werden folgende Resultate erwartet:
+\end_layout
+
+\begin_layout Enumerate
+Dokumente von einer oder mehreren Schweizer News-Webseiten zur Indizierung
+ mit Lucene.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vergleich der Retrieval-Leistung (Precision/Recall) für ausgewählte Suchen
+ (Queries) von Google und Lucene.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Auflistung der Verbesserungsmöglichkeiten durch Änderung von Queries (Google)
+ oder der Indizierungsstrategie (Lucene).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vergleich der Retrieval-Leistung (Precision/Recall) nach Verbesserung der
+ Queries / Indizierungsstrategie.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Überblick/Fazit über Stärken und Schwächen sowie Verbesserungsmöglichkeiten
+ für die Search-Engines Google und Lucene
+\end_layout
+
+\begin_layout Section
+Literaturrecherche
+\end_layout
+
+\begin_layout Standard
+Diese Arbeit dient dem Zwecke, das Erstellen von wissenschaftlichen Arbeiten
+ zu üben, bzw.
+ zu erlernen.
+ Dies wird anhand der Grundlagen des Themas 
+\shape italic
+Information Retrieval
+\shape default
+ gemacht.
+ Da es sich dabei nicht um eine Weiterentwicklung des Themas 
+\shape italic
+Information Retrieval
+\shape default
+ handelt, wird in dieser Arbeit auf eine Recherche des neuesten Standes
+ der Technik (state-of-the-art) verzichtet.
+ Der Autor hält sich bei dieser Arbeit vor allem an das Buch 
+\begin_inset Quotes eld
+\end_inset
+
+Introduction to Information Retrieval
+\begin_inset Quotes erd
+\end_inset
+
+ von Christopher D.
+ Manning 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "introduction_to_information_retrieval"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Dokumentensammlung
+\end_layout
+
+\begin_layout Standard
+(Bei der Planung der Beschaffung der Dokumente muss Rücksicht auf ihre spätere
+ Verwendung genommen werden.) In dieser Arbeit sollen Dokumente bzw.
+ Webseiten durchsucht und die Güte der Suchresultate gemessen, sowie verglichen
+ werden.
+ Die erste Frage, die sich hieraus ergibt ist, wie sich die Güte von Suchresulta
+ten im Information Retrieval Kontext messen lässt.
+ Standardmäßig braucht es dafür eine Test-Kollektion bestehend aus folgenden
+ 3 Elementen 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "introduction_to_information_retrieval"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Eine Dokumentensammlung (document collection)
+\end_layout
+
+\begin_layout Enumerate
+Eine Sammlung von Testfragen, welche als Suchanfragen (Queries) ausgedrückt
+ werden können
+\end_layout
+
+\begin_layout Enumerate
+Eine Menge an Werkzeugen um beurteilen zu können, ob die Suchresultate,
+ bezogen auf die Suchanfrage, relevant sind oder nicht.
+\end_layout
+
+\begin_layout Standard
+In der Aufgabenstellung wurde definiert, dass die Dokumentensammlung in
+ dieser Arbeit durch einen Open-Source-Webcrawler beschafft wird und von
+ Schweizer News-Webseiten stammen soll.
+ Da die Güte der Suchresultate von Google gemessen und mit der von Lucene
+ verglichen werden soll, muss die Dokumentensammlung eine Teilmenge der
+ Dokumente darstellen, die auch von Google durchsucht wird.
+ Deswegen kommt ein Open-Source-Webcrawler zum Einsatz.
+ News-Webseiten wurden wegen folgenden zwei Annahmen ausgewählt:
+\end_layout
+
+\begin_layout Itemize
+News-Webseiten liefern eine genügend grosse Anzahl an Dokumenten, um die
+ Information Retrieval Leistung aussagekräftig beurteilen zu können
+\end_layout
+
+\begin_layout Itemize
+News-Webseiten beinhalten eine breitgefächerte Palette an Informationen,
+ was eine Formulierung einer grosser Anzahl an unterschiedlichen Suchanfragen
+ (Queries) zulässt
+\end_layout
+
+\begin_layout Standard
+Ob sich diese beiden Annahmen bestätigen werden, wird sich im Laufe dieser
+ Arbeit herausstellen.
+ Die Sammlung an Testfragen ist Teil von Punkt 3 der Aufgabenstellung und
+ folgt in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Definition-der-Suchanfragen"
+
+\end_inset
+
+.
+ Die Beurteilung, ob die Suchresultate, bezogen auf die Suchanfrage relevant
+ sind oder nicht, ist Teil von Punkt 4 der Aufgabenstellung und ist Teil
+ von Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Vergleich-der-Retrieval"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Definition der Beschaffung der Testmenge
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Definition-der-Beschaffung-der-Testmenge"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Frage nach der Beurteilungsmöglichkeit von Suchmaschinen ist bereits
+ bei der Beschaffung der Dokumente von Bedeutung.
+ Um zu verstehen, weshalb das so ist, muss erläutert werden, wie Suchresultate
+ beurteilt werden können.
+ Die zwei am häufigsten verwendeten Standardmaße sind dabei 
+\emph on
+Precision
+\emph default
+ und 
+\emph on
+Recall
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "introduction_to_information_retrieval"
+
+\end_inset
+
+.
+ Sie sind wie folgt definiert:
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Precision
+\emph default
+ (P) ist das Verhältnis von gefundenen, relevanten Dokumenten zu der Gesamtmenge
+ der gefundenen Dokumente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Precision\,=\,\tfrac{\#(gefundene\, und\, relevante\, Dokumente)}{\#(gefundene\, Dokumente)}\,=\, P(relevant\shortmid gefunden)\label{eq:precision-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Recall
+\emph default
+ (R) ist das Verhältnis von gefundenen, relevanten Dokumenten zu der Gesamtmenge
+ an relevanten Dokumenten:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Recall\,=\,\tfrac{\#(gefundene\, und\, relevante\, Dokumente)}{\#(relevante\, Dokumente)}\,=\, P(gefunden\shortmid relevant)\label{eq:recall-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Einer Suche liegt immer eine Dokumentensammlung zu Grunde, welche im Information
+ Retrieval Prozess durchsucht wird.
+ Die Suche liefert eine gewisse Menge an Dokumenten aus dieser Gesamtmenge
+ zurück.
+ Ein Teil dieser Resultatmenge entspricht nun dem in der Suche ausgedrücktem
+ Bedarf nach Informationen.
+ Das sind die relevanten, gefundenen Dokumente.
+ Der Rest der Suchresultate sind nicht-relevante, gefundene Dokumente, welche
+ vom Information Retrieval Prozess fälschlicherweise zurückgeliefert wurden.
+ Ebenso wird es Dokumente geben, die, obwohl relevant, nicht zurückgegeben
+ wurden und natürlich auch solche die richtigerweise nicht zurückgegeben
+ wurden.
+ 
+\end_layout
+
+\begin_layout Standard
+Eine wichtige Frage, die hieraus folgt ist: Wer beurteilt, welche der gefundenen
+ Dokumente relevant sind und welche nicht? Nach Ansicht des Autors sollte
+ dies der Benutzer tun, der die Suchanfrage gestellt hat.
+ Nur er weiss, nach was genau er gesucht hat.
+ Daraus folgt, dass der Benutzer 
+\emph on
+Precision
+\emph default
+ und 
+\emph on
+Recall
+\emph default
+ selbst berechnen muss.
+ Er muss also alle zurückgegebenen Resultate begutachten und entscheiden,
+ welche nun für ihn, bezogen auf die Suchanfrage, relevant sind und welche
+ nicht.
+ Zudem muss er aus allen Dokumenten (Dokumentensammlung) all diejenigen
+ bestimmen, die relevant gewesen wären, jedoch nicht in den Suchresultaten
+ angezeigt wurden.
+ Damit dies zu bewerkstelligen ist, wird diese manuelle Auswertung nicht
+ an der Gesamtmenge, sondern einer Teilmenge der Dokumentensammlung, einer
+ sogenannten Testmenge, durchgeführt.
+ Für diese Arbeit wird die Grösse der Testmenge vom Autor auf 50 bis 100
+ Dokumente festgelegt.
+ Wie zuvor beschrieben, muss es sich dabei um Dokumente handeln, die auch
+ von Google gefunden werden können.
+ Die erste Herausforderung besteht nun darin, durch den Einsatz sogenannter
+ erweiterten Suchoperatoren eine Google-Suche zu formulieren, die eine Menge
+ an Suchresultaten zurückliefert, welche im Rahmen der vorgeschriebenen
+ Grösse liegt.
+ Die Gesamtmenge der von Google indizierten Webseiten liegt dabei grob geschätzt
+ zwischen 40 bis 50 Milliarden
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.worldwidewebsize.com/
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.statisticbrain.com/total-number-of-pages-indexed-by-google/
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Section
+Vorgehen bei der Beschaffung der Dokumente
+\end_layout
+
+\begin_layout Standard
+Wie in der Aufgabenstellung beschrieben, wird zum Bezug der Dokumente ein
+ Open Source Webcrawler verwendet.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+Der Webcrawler, der schlussendlich für diese Aufgabe ausgewählt wurde, ist
+ Scrapy 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+www.scrapy.org
+\end_layout
+
+\end_inset
+
+.
+ Scrapy ist ein auf der Programmiersprache Python basiertes Webcrawling
+ Framework.
+ Der Programmcode für den Webcrawler sowie die gesamte Arbeit kann auf Github
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://github.com/sandorkan/InformationRetrievalSeminar
+\end_layout
+
+\end_inset
+
+ gefunden werden.
+ 
+\end_layout
+
+\begin_layout Standard
+Die Webseite, von denen die Dokumente schlussendlich stammen / bezogen werden,
+ ist die Rubrik 
+\begin_inset Quotes eld
+\end_inset
+
+Schweiz
+\begin_inset Quotes erd
+\end_inset
+
+ der Web-Präsenz des Tagesanzeigers
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+www.tagesanzeiger.ch/schweiz
+\end_layout
+
+\end_inset
+
+.
+ Damit die Anzahl der Dokumente die Festgelegte nicht überschreitet, werden
+ nur Artikel berücksichtigt, welche in einem Zeitraum von sieben Tagen,
+ also einer Woche liegen.
+ Webseiten, die bloss Kommentare, oder Listen von Artikeln enthalten werden
+ ausgeschlossen.
+ Die schlussendlich verwendete Suchanfrage (Basisabfrage) lässt sich am
+ einfachsten direkt via URL ausführen und sieht wie folgt aus:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Basisabfrage
+\begin_inset CommandInset label
+LatexCommand label
+name "google_basisabfrage"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+https://www.google.ch/search?
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+q=site:tagesanzeiger.ch/schweiz/standard+-inurl:comments+-inurl:html&num=100&tbs=
+qdr:w
+\end_layout
+
+\begin_layout Standard
+Die einzelnen Parameter der URL haben dabei folgende Bedeutung:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="right" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+q:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Begriffe nach denen gesucht werden soll (Query)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+site:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Webseite, auf welche die Suche eingegrenzt werden soll.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inurl:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wörter, die in der URL vorkommen dürfen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Durch das Vorangestellte Minus wird die Bedeutung negiert.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+num:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die Anzahl der angezeigten Suchresultate
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+tbs:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Der Zeitparameter.
+ 
+\emph on
+qdr:w
+\emph default
+ setzt ihn auf eine Woche
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+start:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Startnummer der angezeigten Suchresultate
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5bp
+\end_inset
+
+Der Parameter 
+\emph on
+start
+\emph default
+, welcher nicht in der ursprünglichen Suchanfrage steht,
+\emph on
+ 
+\emph default
+wird dafür verwendet, um an Resultate zu gelangen bzw.
+ anzeigen zu können, welche sich nicht auf der ersten Seite der Google-Suchresul
+tate befinden.
+ Dies ist vor allem beim Einsatz des Webcrawlers wichtig, welcher nicht
+ wie eine Person auf Links klicken kann, um von einer Seite von Google-Suchresul
+taten zur Nächsten zu gelangen.
+ Die beiden Parameter 
+\emph on
+num=100
+\emph default
+ und 
+\emph on
+start=101
+\emph default
+ würden bedeuten, dass die Suchresultate 101-201 angezeigt bzw.
+ ausgegeben werden.
+\end_layout
+
+\begin_layout Standard
+Diese Suchanfrage liefert nun die Testmenge, mit welcher im weiteren Verlauf
+ der Arbeit sowohl Lucene wie auch Google getestet werden.
+ Damit sichergestellt wird, dass Lucene dabei dieselben Dokumente wie Google
+ als Testmenge hat, bezieht der Webcrawler seine Dokumente aus der Antwortseite
+ von Google.
+ Um die Testmenge später mit Google zu durchsuchen, wird die Suchanfrage,
+ welche die Testmenge als Resultat liefert, erweitert (zusätzliche Suchbegriffe).
+ Damit wird sichergestellt, dass alle Resultate in der Testmenge liegen.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+Es wurde festgestellt, dass Google mitunter dieselben Dokumente mehrmals
+ in der Antwort auflistet.
+ Dabei handelt es sich um Artikel, die zwar identisch sind, jedoch über
+ unterschiedliche URLs erreicht werden können.
+ Diese mehrmals auftretenden Dokumente werden in der Testmenge jeweils nur
+ einmal berücksichtigt.
+\end_layout
+
+\begin_layout Standard
+Die Beschränkung, dass Artikel in einem Zeitraum von einer Woche liegen
+ müssen, wirft ein Problem auf.
+ Optimal wäre es, einen beliebigen Zeitraum definieren zu können, um so,
+ unabhängig vom Zeitpunkt der Suchanfrage mit Google, immer dasselbe Resultat
+ zu bekommen.
+ Leider scheint diese Option der Beschränkung der Resultate auf einen bestimmten
+ Zeitraum mit Google nicht richtig, oder zumindest nicht wie erwartet zu
+ funktionieren.
+ Bei den Suchresultaten befinden sich auch Artikel, die zum Teil mehrere
+ Jahre vor dem definierten Zeitraum liegen.
+ Die Option, einen bestimmte Zeitraum zu definieren, fällt deshalb weg.
+ Google bietet jedoch auch die Option, nur Resultate anzuzeigen, die nicht
+ älter als eine gewissen Zeitspanne sind (Stunde, Tag,Woche, Monat oder
+ Jahr).
+ Und diese Option funktioniert auch, weshalb sie in dieser Arbeit zum Einsatz
+ kommt.
+ Das Problem, dass sich nun hieraus ergibt ist, dass eine solche Suchanfrage
+ täglich, vielleicht sogar binnen kürzerer Frist, unterschiedliche Suchresultate
+ liefert.
+ Beim Durchführen dieser Arbeit stellt dies, mit ein wenig Planung zwar
+ kein grösseres Problem dar, jedoch sind Resultate, die dokumentiert werden,
+ zu einem späteren Zeitpunkt nur noch schwer nachvollziehbar, da die ursprünglic
+he Testmenge an Dokumenten mit Google nicht mehr direkt gefunden werden
+ kann.
+ Um die Resultate beweisbarer zu machen, werden die Antwort-Webseiten von
+ Google abgespeichert.
+ So ist zumindest ersichtlich, von welcher Testmenge ausgegangen wurde.
+\end_layout
+
+\begin_layout Section
+Beschaffung der Dokumente
+\end_layout
+
+\begin_layout Standard
+Die im vorherigen Kapitel beschriebene Suchanfrage (Query) zur Beschaffung
+ der Dokumente wurde am 09.05.2013 mit Google ausgeführt.
+ Einige der Webseiten im Suchresultat verwiesen auf Artikel die bereits
+ nicht mehr verfügbar waren.
+ Ein grosser Anteil der Suchresultate waren zudem eigentlich identische
+ Artikel die jedoch über unterschiedliche Links erreichbar waren.
+ Nicht verfügbare sowie mehrfach vorkommende Artikel werden bei der Indexierung
+ ignoriert.
+ Am Schluss blieb noch eine Menge von 35 Artikeln übrig.
+ Das Resultat sieht zusammengefasst wie folgt aus:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="right" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Anzahl Suchresultate:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+57
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Nicht verfügbar:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mehrfach vorkommend:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Total an zu indizierenden Artikeln:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+35
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5bp
+\end_inset
+
+Das Google-Suchresultat wurde abgespeichert und kann im Github Repository
+ eingesehen werden
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://github.com/sandorkan/InformationRetrievalSeminar
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Die Artikel der Resultatseite wurden daraufhin mit Scrapy heruntergeladen
+ (crawled).
+ Der Code des Webcrawlers sowie die 35 beschaffenen Dokumente sind ebenfalls
+ auf dem Github Repository.
+\end_layout
+
+\begin_layout Standard
+Die Grösse der Dokumentensammlung variiert stark.
+ Bei früheren Tests gab die Google-Suchanfrage meistens um die 100, meistens
+ sogar mehr Artikel zurück.
+ Abzüglich von nicht verfügbaren, sowie mehrfach enthaltenen Artikeln enthielt
+ die Testmenge jeweils zwischen 70 und 100 Dokumenten.
+ Dass die Suchanfrage am 09.05.2013 deutlich weniger Resultate ergab, könnte
+ nach Meinung des Autors an den öffentlichen Feiertagen, die zur Zeit stattfinde
+n, liegen (1.
+ Mai - Tag der Arbeit, 9.
+ Mai - Auffahrt).
+ 
+\end_layout
+
+\begin_layout Chapter
+Vergleich der Retrieval Leistung von Google und Lucene
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Vergleich-der-Retrieval"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Testmenge, anhand derer die Retrieval Leistung von Google und Lucene
+ gemessen sowie verglichen werden soll, ist nun vorhanden.
+ In diesem Kapitel werden die Dokumente zuerst indiziert, damit sie später
+ durchsucht werden können.
+ Beide Prozesse, die Indizierung sowie die Suche werden dabei mit Lucene
+ bzw.
+ Luke durchgeführt.
+ Der Einsatz der Luke-Software war vor Beginn dieser Arbeit noch nicht geplant.
+ Was genau Luke macht und weshalb diese Software in dieser Arbeit eingesetzt
+ wird, wird in Kap.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Erste-Ausführung-der-Suchanfragen-und-Vergleich-der-Suchleistung"
+
+\end_inset
+
+ genauer erläutert.
+ Vor der Suche werden die Suchanfragen, welche durchgeführt werden sollen
+ definiert.
+ Mit den definierten Suchanfragen wird die Testmenge dann mit Google sowie
+ mit Lucene durchsucht und die Güte der Suchresultate gemessen.
+ Dies anhand der in Kapitel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Definition-der-Beschaffung-der-Testmenge"
+
+\end_inset
+
+ beschriebenen Messgrössen Precision (eq: 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:precision-1"
+
+\end_inset
+
+) und Recall (eq: 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:recall-1"
+
+\end_inset
+
+).
+ In einem nächsten Schritt soll versucht werden, die Güte der Suchresultate
+ zu verbessern.
+ Bei der Google-Suche wird nach Wegen gesucht, die Suchanfragen (Queries)
+ und bei Lucene die Indizierungsstrategie zu verbessern.
+ Danach werden die zuvor definierten Suchanfragen erneut durchgeführt und
+ die Resultate miteinander verglichen.
+\end_layout
+
+\begin_layout Section
+Indizierung der Dokumente mit Lucene
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Erste_Indizierung-der-Dokumente"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Als Anleitung für die Erstellung des Index mit Lucene diente das Tutorial
+ welches von Mitarbeitern der Firma LingPipe sowie der Universität von Columbia
+ erstellt wurde
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://alias-i.com/lingpipe-book/lucene-3-tutorial-0.5.pdf
+\end_layout
+
+\end_inset
+
+.
+ Es war sehr hilfreich und gab eine gute Einführung in die Funktion sowie
+ Anwendung von Lucene.
+ Da es sich bei den Dokumenten um Zeitungsartikel mit deutschem Text handelt,
+ wurde bei der Erstellung des Index anstatt der 
+\emph on
+StandardAnalyzer
+\emph default
+-Klasse die 
+\emph on
+GermanAnalyzer
+\emph default
+-Klasse verwendet.
+ Der Code welcher die Dokumente indiziert ist auf dem Github Repository
+ verfügbar.
+\end_layout
+
+\begin_layout Section
+Definition der Suchanfragen (Queries)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Definition-der-Suchanfragen"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zuerst werden die indizierten Dokumente manuell durchgeschaut um zu sehen,
+ über welche Themen im Tagesanzeiger in der Rubrik Schweiz vermehrt berichtet
+ wurde.
+ In der Woche vor dem 09.05.2013 waren dies unter anderem:
+\end_layout
+
+\begin_layout Itemize
+Die bevorstehende Wahl zur 1:12 Initiative
+\end_layout
+
+\begin_layout Itemize
+Einige Artikel über Steuern: Steuergeheimnis, Steuerabkommen, Steuererhöhung,
+ Steuerpflichten
+\end_layout
+
+\begin_layout Itemize
+Der Islam bzw.
+ Muslime in der Schweiz
+\end_layout
+
+\begin_layout Itemize
+Die Pensionskasse(n)
+\end_layout
+
+\begin_layout Itemize
+Volkswahl des Bundesrates bzw.
+ allgemeines über den Bundesrat
+\end_layout
+
+\begin_layout Itemize
+Artikel über politische Parteien
+\end_layout
+
+\begin_layout Standard
+Suchanfragen, welche nach Dokumenten mit diesen Themen suchen, sollten mit
+ Sicherheit einige Resultate zurückliefern.
+ Das heisst, es gibt zu diesen Themen sicher relevante Dokumente.
+ Dies ist dem Autor aus dem Grund wichtig, da die Formeln für die beiden
+ in diesem Kontext angewandten Messgrössen, 
+\emph on
+Precision
+\emph default
+ und 
+\emph on
+Recall
+\emph default
+, im Zähler jeweils 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+gefundene und relevante Dokumente
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ haben.
+ 
+\emph on
+Recall
+\emph default
+ hat zudem die Gesamtanzahl an relevanten Dokumenten im Nenner.
+ Sind nun keine relevanten Dokumente in der Testmenge, wären 
+\emph on
+Precision
+\emph default
+ und 
+\emph on
+Recall
+\emph default
+ dementsprechend gleich Null, egal wie viel Dokumente gefunden worden wären.
+ Das sagt natürlich auch etwas aus, aber diese Resultate lassen sich so
+ nicht mehr verbessern.
+ Wenn man in einer Testmenge nach etwas sucht, zu dem es keine relevanten
+ Dokumente gibt, können auch keine relevanten Dokumente gefunden werden.
+ 
+\emph on
+Precision
+\emph default
+, sowie 
+\emph on
+Recall
+\emph default
+ wären somit immer gleich Null.
+ Die Aufgabe dieser Arbeit, die Suchleistung von Google mit der von Lucene
+ zu vergleichen sowie zu verbessern, wäre mit Suchanfragen, die nach Themen
+ suchen, zu denen es keine relevanten Dokumente gibt nicht erfüllbar und
+ wird deshalb zu vermeiden versucht.
+\end_layout
+
+\begin_layout Standard
+Aus den vorhin aufgelisteten Themen wurden folgende Suchanfragen (Queries)
+ abgeleitet, die in dieser Arbeit zur Messung der Suchleistung benutzt werden
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\series default
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Thema
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Query
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Die bevorstehende Wahl zur 1:12 Initiative
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+initiative lohn
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Artikel über Steuern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+steuern
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Islam / Muslime in der Schweiz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+islam schweiz
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Artikel über Pensionskasse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pensionskasse
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Div.
+ Artikel über Bundesrat
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bundesrat wahlen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Artikel über politische Parteien
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+svp ausländer
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Suchanfragen
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_definierte_suchanfragen"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Erste Ausführung der Suchanfragen und Vergleich der Suchleistung
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Erste-Ausführung-der-Suchanfragen-und-Vergleich-der-Suchleistung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bei der Benutzung von Google zur Suche von Dokumenten gibt der Autor normalerwei
+se die Begriffe, die das Gesuchte umschreiben, nacheinander in das Suchfeld
+ der Google-Webseite ein.
+ Es werden dabei keine erweiterten Operatoren oder speziellen Zeichen verwendet,
+ welche die Resultate zu beeinflussen bzw.
+ eingrenzen würden.
+ Es wird angenommen, dass der durchschnittliche Benutzer Google genau gleich
+ benutzt.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+Genau so wird nun deshalb auch bei dieser ersten Ausführung der im vorherigen
+ Abschnitt definierten Queries vorgegangen.
+ Sie werden exakt so wie beschrieben der Basisabfrage (siehe Kap.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "google_basisabfrage"
+
+\end_inset
+
+) hinzugefügt.
+ Google behandelt Suchbegriffe, die auf diese Weise eingegeben werden so,
+ dass jedes Wort, das eingegeben wird, in den gefundenen Dokumenten vorkommen
+ muss.
+ Die Suchanfrage 
+\begin_inset Quotes eld
+\end_inset
+
+a b
+\begin_inset Quotes erd
+\end_inset
+
+ (ohne Anführungszeichen) würde bei Google nach allen Dokumente suchen,
+ in denen a UND b vorkommt, nicht a ODER b.
+ Lucene wird auf dieselbe Art und Weise suchen.
+ Dafür muss bei Lucene jeweils ein Pluszeichen (+) vor dem Suchbegriff eingegebe
+n werden.
+ Folgend ein Beispiel, wie die Suchanfragen in Google bzw.
+ Lucene aussehen werden:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="right" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Query:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+initiative lohn
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Google Query:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+initiative lohn
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Lucene Query:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++intiative +lohn
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Der mit Lucene erstellte Index wird zudem mit Luke
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://code.google.com/p/luke/
+\end_layout
+
+\end_inset
+
+ durchsucht.
+ Suchen liessen sich theoretisch auch mit Lucene formulieren und ausführen.
+ Jedoch geschähe dies mit Lucene auf Prorgrammcode-Ebene.
+ Das heisst, man müsste alle Fragen sowie die Auswertung der Suchanfragen
+ in Java-Code programmieren.
+ Luke bietet für genau diese Aufgabe eine grafische Benutzeroberfläche,
+ die diese Aufgabe erheblich vereinfacht.
+ Mit Luke lassen sich Suchanfragen über mit Lucene erstellte Indexe durchführen.
+ Suchanfragen lassen sich dabei einfach konfigurieren und Resultate werden
+ übersichtlich dargestellt.
+ Aus diesen Gründen wird in dieser Arbeit für 
+\begin_inset Quotes eld
+\end_inset
+
+die Suche mit Luce
+\begin_inset Quotes erd
+\end_inset
+
+ Luke verwendet.
+\end_layout
+
+\begin_layout Subsection
+Google
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Google_verbesserungsmöglichkeiten"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die in Kap.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Definition-der-Suchanfragen"
+
+\end_inset
+
+ definierten Suchanfragen werden nun mit Google ausgeführt.
+ Zudem wird die Güte der Suchresultate anhand der Messgrössen 
+\emph on
+Precision
+\emph default
+ und 
+\emph on
+Recall
+\emph default
+ beschrieben.
+ Die Resultate sind der folgenden Tabelle abzulesen:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suchanfrage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Gefunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Precision
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Recall
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+initiativei lohn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60% (3/5)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (3/3)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+steuern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0% (0/3)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0% (0/4)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+islam schweiz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50% (3/6)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (3/3)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pensionskasse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (1/1)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50% (1/2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bundesrat wahlen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+37.5% (3/8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75% (3/4)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+svp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21.2% (7/33)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (7/7)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5bp
+\end_inset
+
+Interessant ist, dass bei Suchanfrage Nummer 2 kein einziges relevantes
+ Dokument gefunden wurde.
+ Google sucht normalerweise auch nach Wörtern, welche zum Teil aus dem gesuchten
+ Wort bestehen (Bsp.
+ Steuer --> Steuersünder).
+ In diesem Kontext, in dem die Suche auf den Zeitraum der letzten Wochen
+ eingegrenzt ist, funktioniert dies jedoch nicht.
+ Auch das Resultat von Suchanfrage Nummer 4 ist verwunderlich.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+In der ganzen Dokumentensammlung gibt es genau zwei relevante Dokumente.
+ Beide habe das Wort 
+\begin_inset Quotes eld
+\end_inset
+
+Pensionskasse
+\begin_inset Quotes erd
+\end_inset
+
+ im Titel, jedoch wurde nur eines davon gefunden.
+ Suchanfrage Nummer 6 offenbart eine Eigenschaft von Google, derer man sich
+ bewusst sein sollte.
+ 23 der 33 gefundenen Dokumente enthielten lediglich einen Link, welcher
+ zudem in allen Fällen auf ein und denselben Artikel verwies.
+ Der Link gehörte nicht zum Inhalt des Artikels, sondern befand sich irgendwo
+ auf der Webseite.
+ Man muss sich bewusst sein, dass Google standardmässig Text auf der gesamten
+ Webseite durchsucht und nicht nur den für die Webseite eigentlich Relevanten.
+ 
+\end_layout
+
+\begin_layout Subsection
+Lucene / Luke
+\end_layout
+
+\begin_layout Standard
+Die in Kap.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Definition-der-Suchanfragen"
+
+\end_inset
+
+ definierten Suchanfragen werden nun mit Luke ausgeführt.
+ Zudem wird die Güte der Suchresultate anhand der Messgrössen 
+\emph on
+Precision
+\emph default
+ und 
+\emph on
+Recall
+\emph default
+ beschrieben.
+ Die Resultat sind der folgenden Tabelle abzulesen:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suchanfrage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Effektiv
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Gefunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Precision
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Recall
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++initiative +lohn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++initiativ +lohn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75% (3/4)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (3/3)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++steuern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++steuer
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+66.67% (2/3)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50% (2/4)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++islam +schweiz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++islam +schweiz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (3/3)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (3/3)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++pensionskasse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++pensionskass
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (2/2)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (2/2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++bundesrat +wahlen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++bundesrat +wahl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80% (4/5)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (4/4)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++svp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++svp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+87.5% (7/8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (7/7)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5bp
+\end_inset
+
+Interessant ist hier zu sehen, wie die effektive Suchanfrage, die von Luke
+ durchgeführt wird, aussieht.
+ Zum Beispiel wurde aus pensionskasse pensionskass und aus steuern steuer.
+ Dies ist Teil des sogenannten 
+\emph on
+stemming
+\emph default
+ (eng.) Prozesses der 
+\emph on
+GermanAnalyzer
+\emph default
+ Klasse von Lucene.
+ Das 
+\emph on
+stemming
+\emph default
+ wird bei der Indizierung der Dokumente, sowie bei der Suche durchgeführt
+ und normiert Ausdrücke in ihre Stammform.
+ Ausdrücke die denselben Wortstamm, jedoch vielleicht unterschiedliche Endungen
+ besitzen oder im Plural stehen, werden so wie ein und dasselbe Wort behandelt.
+ Die Analyzer müssen bei diesen Prozessen natürlich dieselben sein, da ansonsten
+ Wörter, nach denen gesucht wird, nicht mit den indizierten Worten übereinstimme
+n.
+ In dieser ersten Durchführung des Indizierungs- und Suchprozesses mit Lucene
+ wurde dabei die 
+\emph on
+GermanAnalyzer
+\emph default
+ Klasse angewandt, welche sich im Umgang mit der deutschen Sprache versteht
+ (bitte nun keine spitze Bemerkung über meinen Umgang mit der deutschen
+ Sprache).
+\end_layout
+
+\begin_layout Subsection
+Fazit
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Fazit_google_vs_lucene_1"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Es war ziemlich schwierig, gute Suchanfragen auf die Testmenge der Dokumente
+ zu definieren.
+ Die Dokumente sind zu unterschiedlich, als das eine grössere Menge relevant
+ sein kann.
+ Bewertungen der Relevanz hängen zudem vom jeweiligen Nutzer ab, so dass
+ die Precision- und Recallwerte wahrscheinlich von Person zu Person ein
+ wenig anders ausfallen würden.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+Das macht die objektive Beurteilung von der Güte von Suchmaschinen sehr
+ schwer, wenn nicht praktisch unmöglich.
+ Besonders, wenn sie nur von einer Person durchgeführt werden.
+ Lucene schnitt in diesem ersten Test weitaus besser und stabiler ab.
+ Precision- und Recallwerte lagen über denen von Google.
+ Der Autor sieht darin zwei Ursachen.
+ Die erste und schwerer wiegende ist die Tatsache, dass die Dokumente die
+ mit Lucene indiziert wurden, genau den Text des jeweiligen Artikels enthalten,
+ während Google das gesamte Dokument bzw.
+ die gesamte Webseite durchsucht.
+ So gibt Google auch Dokumente zurück, die zwar einen Link mit dem Suchbegriff
+ enthalten, deren Inhalt jedoch nicht im geringsten etwas mit dem Suchbegriff
+ zu tun hat.
+ Zudem scheint sich Google nicht immer konstant zu verhalten.
+ Suchbegriffe, die Google normalerweise findet (z.
+ B.
+ : Suchbegriff 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+steuer
+\emph default
+
+\begin_inset Quotes erd
+\end_inset
+
+ findet auch Dokumente mit Wörtern wie 
+\begin_inset Quotes eld
+\end_inset
+
+
+\emph on
+Steuer
+\emph default
+sünder
+\begin_inset Quotes erd
+\end_inset
+
+) findet es nicht mehr, wenn die Suche auf einen bestimmten Zeitraum eingeschrän
+kt wurde.
+\end_layout
+
+\begin_layout Standard
+Diese Eindrücke und ersten Erkenntnisse werden im nächsten Abschnitt dazu
+ eingesetzt, um zu evaluieren, wie die Suchleistung von Google und Lucene
+ verbessert werden könnte.
+\end_layout
+
+\begin_layout Section
+Evaluierung der Möglichkeiten zur Verbesserung der Retrieval-Leistung von
+ Google und Lucene
+\end_layout
+
+\begin_layout Standard
+Google und Lucene bieten unterschiedliche Möglichkeiten, wie man ihre Suchresult
+ate beeinflussen kann.
+ Bei Google hat man lediglich Einfluss auf die Art und Weise wie man eine
+ Suchanfrage (Query) formuliert, der Index besteht bereits und kann nicht
+ beeinflusst werden.
+ Um die Suchresultate mit Google zu verbessern wird also versucht, die Suchanfra
+gen zu optimieren.
+ Bei Lucene besteht die Möglichkeit, Einfluss auf den Index sowie die Suchabfrag
+en zu üben.
+ In dieser Arbeit wird das Augenmerk auf den Index bzw.
+ Indizierung gelegt.
+ Es wird versucht zu evaluieren, wie die Indizierung angepasst werden kann
+ und wie sich dies auf die Suchanfragen auswirkt.
+\end_layout
+
+\begin_layout Subsection
+Google
+\end_layout
+
+\begin_layout Standard
+Bei der ersten Durchführung der Suchanfragen hat Google wesentlich schlechter
+ als Lucene abgeschnitten, wie in Kap.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Fazit_google_vs_lucene_1"
+
+\end_inset
+
+ genauer erläutert wurde.
+ Das liegt vor allem daran, das Google die gesamte Webseite, dass heisst,
+ URL, Links, Text usw.
+ durchsucht und nicht nur den Text des Artikels, welcher in dieser Arbeit
+ von eigentlichem Interesse ist.
+ Ein erstes Ziel zur Verbesserung der Resultate ist es nun, die Suche, soweit
+ möglich, auf den Text des Artikels zu konzentrieren.
+ Dafür müssen die Suchanfragen angepasst werden.
+ Google erlaubt dies dem Benutzer durch die Benutzung diverser (erweiterten)
+ Operatoren.
+ Das sind entweder spezielle Zeichen (z.
+ B.
+ : *, ~, -, 
+\begin_inset Quotes eld
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+) oder auch Text, der vor einen oder mehrere Suchbegriffe gestellt wird
+ (z.
+ B.
+ : filetype: , site: , cache: ).
+ Die erweiterten Operatoren, welche sich für die Verbesserung der Google-Suchanf
+ragen dieser Arbeit eignen, sind in folgender Tabelle aufgelistet.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+Diese sowie weitere Information zur Google-Suche mit erweiterten Operatoren
+ wurden der GoogleGuide
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+http://www.googleguide.com
+\end_layout
+
+\end_inset
+
+ Webseite entnommen.
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Operator
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Bedeutung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+ 
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sucht nach exakt nach dem Suchbegriff
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Negiert einen Suchbegriff
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+intext:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sucht nur im Text.
+ Nicht URL, Title, Links etc.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+link:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sucht nach Links mit entsprechendem Begriff
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+inanchor:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sucht Begriff in <a> HTML Element
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5bp
+\end_inset
+
+Der Operatoren 
+\emph on
+intext:
+\emph default
+ sollte die Bedingung, die Suche auf den Text der Webseite zu beschränken,
+ ziemlich genau erfüllen.
+ Es ist zwar immer noch möglich, dass sich der gesuchte Begriff nicht im
+ Text des Artikels selbst, sondern irgendwo anders auf der Webseite befindet,
+ jedoch sollte sichergestellt sein, dass so wirklich nur im Text und nicht
+ auch in anderen HTML Elementen bzw.
+ der URL gesucht wird.
+ Ein Nachteil ist jedoch genau der Punkt, dass die Suche in der URL auch
+ ausgeschlossen wird.
+ Nach Meinung des Autors wäre die Suche in der URL jedoch wünschenswert,
+ da Begriffe, die in der URL vorkommen, meist auf den Inhalt der Webseite
+ schliessen lassen und so von Bedeutung sind.
+ Dieser Nachteil sollte mit der gemeinsamen Nutzung der Operatoren 
+\emph on
+-link:
+\emph default
+ und 
+\emph on
+-inanchor: 
+\emph default
+zu beheben sein.
+ Zu beachten ist hierbei das Minus (-) vor dem Operator, welches gefundene
+ Resultate ausschliesst.
+ Der 
+\emph on
+
+\begin_inset Quotes eld
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+ 
+\emph default
+Operator, lässt exakte Suchen zu.
+ Er ist hier von Interesse, weil die Begriffe mit Lucene ebenfalls exakt
+ gesucht wurden.
+ Da die Suche mit Lucene so viel besser abgeschnitten hat, ist es naheliegend,
+ das Suchverhalten von Google an das von Lucene anzunähern, was mit den
+ eben beschriebenen Massnahen teilweise versucht wird.
+\end_layout
+
+\begin_layout Subsubsection
+Fazit
+\end_layout
+
+\begin_layout Standard
+Die Google-Suchanfrage wird also wie folgt angepasst.
+ Es wird nur im Text und in der URL gesucht und gefundene Begriffe müssen
+ exakt mit dem Suchbegriff übereinstimmen.
+ Folgende Tabelle gibt hierfür ein Beispiel:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="right" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suchanfrage alt:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+spv
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suchanfrage neu:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+svp
+\begin_inset Quotes erd
+\end_inset
+
+ -link:
+\begin_inset Quotes erd
+\end_inset
+
+svp
+\begin_inset Quotes erd
+\end_inset
+
+ -inanchor:
+\begin_inset Quotes erd
+\end_inset
+
+svp
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Lucene
+\begin_inset CommandInset label
+LatexCommand label
+name "sub:Lucene_verbesserung"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wie bereits beschrieben, wird hier versucht zu evaluieren, wie man die Suchleist
+ung von Lucene bzw.
+ Luke verbessern kann, indem man den Indizierungsprozess anpasst.
+ Die Frage, die sich wegen den sehr guten Suchresultaten von vornherein
+ stellt, ist, ob es überhaupt möglich ist, diese noch zu verbessern.
+ Der
+\emph on
+ 
+\emph default
+Precisionwert aller Resultate lag über 50% und ein einziger erreichte den
+ 
+\emph on
+Support
+\emph default
+wert von 100% nicht.
+\end_layout
+
+\begin_layout Standard
+Um Möglichkeiten offenzulegen, wie die Indizierung verbessert werden könnte,
+ sei kurz grob ihr Ablauf, so wie er in Lucene implementiert ist, erklärt
+ (aus 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lucene_tutorial"
+
+\end_inset
+
+).
+ Was eigentlich indiziert wird, sind Dokumente.
+ Dokumente bestehen wiederum aus einem oder mehreren Feldern.
+ Jedes Feld hat dabei einen Namen und einen Wert.
+ Zusätzlich wird üblicherweise ein sogenannter 
+\emph on
+Analyzer
+\emph default
+ eingesetzt.
+ Die Aufgabe des Analyzers ist es, den zu indizierenden Text zu formatieren.
+ Dazu zählen Aufgaben wie die Umwandlung aller Buchstaben in Kleinbuchstaben,
+ die Aufsplittung des Textes in einzelne Wörter (sogenannte 
+\emph on
+Token
+\emph default
+), die Entfernung sogenannten Stop-Wörter sowie das Stemming der Wörter.
+ Ein Beispiel soll dies verdeutlichen.
+ Angenommen man hätte eine Dokumentensammlung und will diese durchsuchen.
+ Das heisst, man will schlussendlich ein Suchanfrage durchführen und Lucene
+ oder Luke soll anzeigen, in welchen Dokumenten dieser Suchbegriff vorkommt.
+ Eines dieser Dokumente hätte den Titel 
+\begin_inset Quotes eld
+\end_inset
+
+brown_fox.txt
+\begin_inset Quotes erd
+\end_inset
+
+ und als Inhalt 
+\begin_inset Quotes eld
+\end_inset
+
+The Quick Brown Fox Jumps Over The Lazy Dog
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Will man dieses Dokument nun in Lucene einem Index hinzufügen, so erstellt
+ man ein neues Dokument und fügt diesem Dokument zwei Felder hinzu.
+ Eines hat z.
+ B.
+ den Name 
+\emph on
+Titel
+\emph default
+ und als Wert 
+\begin_inset Quotes eld
+\end_inset
+
+brown_fox
+\begin_inset Quotes erd
+\end_inset
+
+ und das andere als Name 
+\emph on
+Inhalt 
+\emph default
+und als Wert 
+\begin_inset Quotes eld
+\end_inset
+
+the quick brown fox...
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Zusätzlich lässt sich bei der Erstellung eines Feldes definieren, ob und
+ wie der Wert indiziert werden soll.
+ Hier liegt ein möglicher Punkt vor, an welchem die Indizierung und somit
+ womöglich die Qualität des Suchresultates beeinflusst werden kann.
+ Üblicherweise wird der Wert eines Feldes, das indiziert wird, also suchbar
+ sein soll, von einem 
+\emph on
+Analyzer
+\emph default
+ analysiert, was weiter oben bereits beschrieben wurde.
+ Ein Analyzer könnte den Beispieltext wie folgt bearbeiten:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="right" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Original:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+The Quick Brown Fox Jumps Over The Lazy Dog
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Kleinbuchstaben:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+the quick brown fox jumps over the lazy dog
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aufsplittung:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+the
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+quick
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+brown
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+fox
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+jumps
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+over
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+the
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+lazy
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+dog
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Enfernen Stopwörter:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+quick
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+brown
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+fox
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+jumps
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+over
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+lazy
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+dog
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stemming:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+quick
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+brown
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+fox
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+jump
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+over
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+lazi
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+dog
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Mögliche Arbeitsschritte eines Analyzers
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab_arbeitsschritte_analyzer"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Von dem ursprünglichen Satz mit 9 Wörtern bleiben schlussendlich 7 Wörter
+ (Token) übrig.
+ Diese werden im Index abgespeichert, mit dem Verweis darauf, dass sie im
+ Dokument mit dem Titel 
+\begin_inset Quotes eld
+\end_inset
+
+brown_fox
+\begin_inset Quotes erd
+\end_inset
+
+ vorkommen.
+ Je nach Analyzer der in Lucene eingesetzt wird, werden gar keine, ein paar,
+ oder alle dieser Schritte ausgeführt.
+ Die Benutzung eines anderen Analyzers ist ein weiterer Ansatz, um Suchresultate
+ zu verbessern.
+\end_layout
+
+\begin_layout Subsubsection
+Anpassung der Felder
+\end_layout
+
+\begin_layout Standard
+Beim Erstellen eines Feldes können, nebst seinem Namen und dem Wert, noch
+ weitere 
+\begin_inset Quotes eld
+\end_inset
+
+Verhaltensweisen
+\begin_inset Quotes erd
+\end_inset
+
+ definiert werden.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+Das sind:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Field.Store
+\series default
+: Soll der Originalwert ebenfalls im Index abgespeichert werden oder nicht?
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Field.TermVector
+\series default
+: Soll der 
+\emph on
+Term
+\emph default
+-Vektor des Feldes abgespeichert werden? Ein Term ist hierbei ein Wort.
+ Ein Term-Vektor ist eine Liste eines Feldes, in der Anzahl, Position und
+ Länge der Wörter, die in diesem Feld vorkommen, gespeichert sind.
+ Er wird meistens dann gebraucht, wenn nach ähnlichen Dokumenten gesucht
+ werden können soll.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Field.Index
+\series default
+: Ob und wie das Feld indiziert werden soll.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Analyzed: Feld wird indiziert und von einem Analyzer analysiert.
+\end_layout
+
+\begin_layout Itemize
+No: Feld wird nicht indiziert.
+ Es kann nicht nach Werten dieses Felds gesucht werden.
+\end_layout
+
+\begin_layout Itemize
+Not Analyzed: Feld wird indiziert, jedoch nicht von einem Analyzer analysiert.
+ Es wird lediglich der gesamte Wert des Feldes indiziert.
+ Im obigen Beispiel wäre dies der gesamte Satz.
+\end_layout
+
+\begin_layout Itemize
+Analyzed No Norms: Gleich wie bei Analyzed, jedoch ohne das 
+\begin_inset Quotes eld
+\end_inset
+
+Normierungen
+\begin_inset Quotes erd
+\end_inset
+
+ (norms) im Index abgespeichert werden.
+ Das heisst, dass die 
+\emph on
+index-time field
+\emph default
+ und 
+\emph on
+document boosting
+\emph default
+ und 
+\emph on
+field length normalization 
+\emph default
+nicht durchgeführt und im Index abgespeichert werden.
+\end_layout
+
+\begin_layout Itemize
+Not Analyzed No Norms: Gleich wie Analyzed No Norms, ausser das dass Feld
+ nicht von einem Analyzer analysiert wird.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Von den drei beschriebenen Möglichkeiten, die Erstellung eines Feldes fein
+ zu justieren, ist für den Autor vor allem die dritte, also die 
+\emph on
+Field.Index 
+\emph default
+von Interesse, da sich mit ihr die Indizierung und somit das Such- bzw.
+ Findbare beeinflussen lässt.
+ Die Option sollte dabei auf jeden Fall einen 
+\emph on
+Analyzer 
+\emph default
+verwenden, da nach einzelnen Ausdrücken (Wort / Token) gesucht werden soll.
+ Bei der ersten Erstellung des Indexes (Kap.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Erste_Indizierung-der-Dokumente"
+
+\end_inset
+
+) wurde die Option 
+\emph on
+Analyzed
+\emph default
+ verwendet.
+ Das heisst, dass nur die Option 
+\begin_inset Quotes eld
+\end_inset
+
+Analyzed No Norms
+\begin_inset Quotes erd
+\end_inset
+
+ als Anpassung bei der Erstellung der Felder in Frage kommen würde.
+ Die Frage die sich nun stellt ist, ob und wie dies die Suchresultate positiv
+ beeinflussen würde.
+ Bei dieser Option werden wie beschrieben, die 
+\emph on
+index-time field
+\emph default
+ und 
+\emph on
+document boosting
+\emph default
+ und 
+\emph on
+field length normalization 
+\emph default
+nicht durchgeführt und im Index abgespeichert werden.
+ Mit 
+\emph on
+boosting
+\emph default
+ (erhöhen, verstärken) erlaubt Lucene, einzelne Felder höher zu gewichten
+ als andere.
+ Diese Gewichtungen werden für Berechnung einer Punktzahl (score), die jedes
+ Suchresultat erhält, benötigt.
+ Resultate mit einer hohen Punktzahl sind dabei relevanter als solche mit
+ einer niedrigen.
+ 
+\emph on
+Index-time field
+\emph default
+ und 
+\emph on
+document boosting
+\emph default
+ meint nun die Möglichkeit das 
+\emph on
+boosting
+\emph default
+ während der Indizierung anzupassen.
+ Mit der 
+\emph on
+field length normalization 
+\emph default
+werden bei Suchen kurze Felder, die ein gesuchtes Wort enthalten höher gewichtet
+ als längere.
+ Ein Feld mit 1000 Wörtern dass ein gesuchtes Wort enthält wäre also weniger
+ relevant als ein Feld mit 100 Wörter dass ebenfalls dieses Wort enthält.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+Beim 
+\emph on
+boosting
+\emph default
+ sowie der 
+\emph on
+field length normalization
+\emph default
+ geht es also darum, wie ein Feld bzw.
+ Dokument gewichtet wird, was sich später in der Relevanz eines Suchresultates
+ widerspiegelt.
+ Nach Ansicht des Autors ist dies erst bei einer grossen Menge an Dokumenten
+ sinnvoll.
+ Bei einer überschaubaren Testmenge wie die in dieser Arbeit kommt es vor
+ allem darauf an, relevante Dokumente zu finden, nicht so sehr, ob sie mehr
+ oder weniger relevant als ein anderes Dokument sind.
+ Die Option 
+\begin_inset Quotes eld
+\end_inset
+
+Analyzed
+\begin_inset Quotes erd
+\end_inset
+
+, wird im zweiten Durchgang durch die Option 
+\begin_inset Quotes eld
+\end_inset
+
+Analyzed No Norms
+\begin_inset Quotes erd
+\end_inset
+
+ ersetzt.
+ Die sollte zwar das Resultat der Suchgüte nicht verbessern, dafür bei der
+ Erstellung des Indexes weniger Speicherplatz brauchen.
+\end_layout
+
+\begin_layout Subsubsection
+Benutzung eines anderen Analyzers
+\end_layout
+
+\begin_layout Standard
+Bei der ersten Indizierung wurde der 
+\emph on
+GermanAnalyzer 
+\emph default
+eingesetzt.
+ Analyzer führen in Lucene jeweils einen, mehrere oder alle der in Tab.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_arbeitsschritte_analyzer"
+
+\end_inset
+
+ aufgeführten Schritte aus.
+ Vor allem das 
+\emph on
+stemming
+\emph default
+ hat dabei nach Ansicht des Autors grossen Einfluss auf die Güte der Suche,
+ da bei indizierten sowie gesuchten Wörtern nur der Wortstamm übereinstimmen
+ muss und somit automatisch mehr Suchtreffer generiert werden können.
+ Die Umwandlung aller Buchstaben in Kleinbuchstaben geht in dieselbe Richtung
+ und ist deshalb auch wichtig.
+ Nebst den Analyzer für bestimmte Sprachen gibt es auch noch andere, allgemeine
+ Analyzer, welche jedoch allesamt das 
+\emph on
+stemming
+\emph default
+ nicht anwenden.
+ Zu ihnen gehören:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="right" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Name
+\begin_inset space \hspace{}
+\length 25bp
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset space \hspace{}
+\length 90bp
+\end_inset
+
+Funktionen
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WhiteSpaceAnalyer:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aufsplittung
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SimpleAnalyzer:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aufsplittung, Kleinbuchstaben
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+StopAnalyzer:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Aufsplittung, Kleinbuchstaben, Entfernen Stopwörter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang english
+
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Diese Analyzer sind zudem auf die Englische Sprache ausgerichtet.
+ Der StopAnalyzer entfernt daher nur Englische Stopwörter.
+ Weil nur der GermanAnalyzer auf deutschen Text ausgelegt ist und zudem
+ alle in Tab.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_arbeitsschritte_analyzer"
+
+\end_inset
+
+ aufgelisteten Arbeitsschritte durchführt, ist er für die Erstellung des
+ Indexes dieser Arbeit am geeignetsten und wird nicht durch einen anderen
+ ersetzt.
+\end_layout
+
+\begin_layout Subsubsection
+Fazit
+\end_layout
+
+\begin_layout Standard
+Es hat sich herausgestellt, dass die Indizierung, wie sie im ersten Durchgang
+ durchgeführt wurde, bereits nahezu optimal war.
+ Eine Änderung die vorgenommen wird, ist, anstatt 
+\begin_inset Quotes eld
+\end_inset
+
+Analyze
+\begin_inset Quotes erd
+\end_inset
+
+, die Option 
+\begin_inset Quotes eld
+\end_inset
+
+Analyze No Norms
+\begin_inset Quotes erd
+\end_inset
+
+ bei der Erstellung der Felder zu benutzen.
+ Der benutzte Analyzer GermanAnalyzer hat sich zudem als der am geeignetesten
+ herausgestellt.
+ Es wird daher kein anderer Analyzer verwendet.
+ Es wäre zwar interessant zu sehen, ob die Suchresultate mit einem anderen
+ Analyzer wirklich schlechter wären, dies würde jedoch den für diese Arbeit
+ vorgeschriebenen Zeitrahmen sprengen.
+\end_layout
+
+\begin_layout Section
+Zweite Ausführung der Suchanfragen und Vergleich der Suchleistung
+\end_layout
+
+\begin_layout Standard
+Nach der Evaluierung der Verbesserungsmöglichkeiten, werden diese angewandt
+ und die Suchanfragen (definiert in Tab.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab_definierte_suchanfragen"
+
+\end_inset
+
+) noch einmal durchgeführt.
+ Bei den Suchanfragen wird bei Google die Suchanfrage selbst und bei Lucene
+ die Art und Weise der Indexierung angepasst.
+\end_layout
+
+\begin_layout Subsection
+Google
+\end_layout
+
+\begin_layout Standard
+Wie in Kap.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Google_verbesserungsmöglichkeiten"
+
+\end_inset
+
+ beschrieben, werden die Suchanfragen nun so angepasst, nicht mehr gesamte
+ Webseiten, sondern nur Text, Titel und URL durchsucht werden.
+ Queries werden wie folgt angepasst:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features tabularvalignment="middle">
+<column alignment="right" valignment="top" width="0">
+<column alignment="left" valignment="top" width="0">
+<row>
+<cell alignment="right" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suchanfrage alt:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+spv
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suchanfrage neu:
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Quotes eld
+\end_inset
+
+svp
+\begin_inset Quotes erd
+\end_inset
+
+ -link:
+\begin_inset Quotes erd
+\end_inset
+
+svp
+\begin_inset Quotes erd
+\end_inset
+
+ -inanchor:
+\begin_inset Quotes erd
+\end_inset
+
+svp
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die Resultate der neu durchgeführten Suchanfragen sind der folgenden Tabelle
+ abzulesen:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suchanfrage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Gefunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Precision
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Recall
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+initiative lohn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50% (1/2)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33.3% (1/3)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+steuern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0% (0/3)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0% (0/4)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+islam schweiz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0% (0/6)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0% (0/3)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pensionskasse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (1/1)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50% (1/2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bundesrat wahlen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+25% (2/8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50% (2/4)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+svp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+33
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+21.2% (7/33)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (7/7)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Bei Suchanfrage 6 verhielt sich das Resultat ziemlich sonderbar.
+ Obwohl durch die erweiterten Operatoren ausdrücklich nicht nach Links oder
+ <a>-HTML-Tags gesucht werden sollte, wurden die genau selben Seiten wie
+ bereits bei der ersten Suchanfrage zurückgegeben.
+ In dem hier angewendeten Kontext scheinen diese erweiterten Operatoren
+ nicht zu funktionieren.
+ Die Anpassung der Suchanfrage hatte ganz allgemein nicht den gewünschten
+ Effekt.
+ Die Suchresultate verschlechterten sich sogar.
+ Der Autor denkt, dass das daran liegt, dass sich auf Seiten, auf denen
+ sich der gesuchte Begriff findet, vermehrt auch Links bzw.
+ <a>-HTML-Tags befinden.
+ All diese Resultate werden durch den Einsatz dieser erweiterten Operatoren
+ nicht gefunden und lassen diese oftmals relevanten Resultate oftmals weg.
+ Der Einsatz des 
+\emph on
+intext:
+\emph default
+ Operators wäre hier wohl sinnvoller gewesen, auch wenn dieser URLs nicht
+ durchsucht.
+\end_layout
+
+\begin_layout Subsection
+Lucene / Luke
+\end_layout
+
+\begin_layout Standard
+Wie in Kap.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sub:Lucene_verbesserung"
+
+\end_inset
+
+ wird bei der Indizierung mit Lucene beim Erstellen der Felder 
+\begin_inset Quotes eld
+\end_inset
+
+Analyze No Norms
+\begin_inset Quotes erd
+\end_inset
+
+ anstatt der Option 
+\begin_inset Quotes eld
+\end_inset
+
+Analyze
+\begin_inset Quotes erd
+\end_inset
+
+ verwendet.
+ 
+\begin_inset Newpage newpage
+\end_inset
+
+Es wird erwartet, dass dies zwar die Effizienz beim Erstellen des Indexes
+ erhöht, die Suchresultate dagegen nicht beeinflussen sollte.
+ Der Source Code der Implementierung ist wiederum auf dem GitHub Repository
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+https://github.com/sandorkan/InformationRetrievalSeminar
+\end_layout
+
+\end_inset
+
+ einsehbar.
+ Die Resultate der neu durchgeführten Suchanfragen sind der folgenden Tabelle
+ abzulesen:
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace{}
+\length 10bp
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+#
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Suchanfrage
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Effektiv
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Gefunden
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Precision
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Recall
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++initiative +lohn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++initiativ +lohn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+75% (3/4)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (3/3)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++steuern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++steu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+66.67% (2/3)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50% (2/4)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++islam +schweiz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++islam +schweiz
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (3/3)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (3/3)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++pensionskasse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++pensionskass
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (2/2)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (2/2)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++bundesrat +wahlen
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++bundesrat +wahl
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80% (4/5)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (4/4)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++svp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
++svp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+87.5% (7/8)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+100% (7/7)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 5bp
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Fazit
+\end_layout
+
+\begin_layout Standard
+Die Änderung der Field.Index Option von 
+\begin_inset Quotes eld
+\end_inset
+
+Analyze
+\begin_inset Quotes erd
+\end_inset
+
+ zu 
+\begin_inset Quotes eld
+\end_inset
+
+Analyze No Norms
+\begin_inset Quotes erd
+\end_inset
+
+ führte zu den erwarteten Unterschieden bzw.
+ Nicht-Unterschieden.
+ Die Suchresultate blieben dieselben.
+ Sie bekamen jedoch eine andere Punktzahl (scoring) und wurden daher in
+ einer anderen Relevanz-Reihenfolge aufgelistet.
+ Die Speichergrösse des Index auf der Festplatte bliebt dabei derselbe.
+ Im RAM-Arbeitsspeicher kann man jedoch sehen, dass die Instanz von Luke
+ die auf den Index der ohne Normierung abgespeichert wurde, rund 35% weniger
+ an Arbeitsspeicher benötigte.
+ Bei grossen Indexen könnte dieser Punkt durchaus ausschlaggebend werden.
+\end_layout
+
+\begin_layout Chapter
+Fazit
+\end_layout
+
+\begin_layout Standard
+Es kann ganz klar gesagt werden, dass Lucene bei der Durchsuchung der Dokumenten
+menge dieser Arbeit besser als Google abgeschnitten hat.
+ Precision- und Recallwerte lagen konstant höher als bei Google und lagen
+ auch nicht selten bei 100%.
+ Ob dies bei Lucene auch bei einer grösseren Dokumentensammlung von vielleicht
+ einigen hunderttausend Dokumenten immer noch gilt, kann jedoch nicht gesagt
+ werden.
+ Dies macht es auch ein wenig problematisch, Google mit Lucene objektiv
+ zu vergleichen.
+ Um mit Google die Testmenge an Dokumenten zu erhalten, musste bereits eine
+ längere Suchanfrage definiert werden, welche dann beim Vergleich der Suchleistu
+ng durch das Hinzufügen weiterer Suchbegriffe ergänzt wurde.
+ Man merkte, dass Google nicht wirklich darauf ausgelegt ist, so benutzt
+ zu werden.
+ Oft funktionierten zudem erweiterte Operatoren nicht bzw.
+ nicht wie erwartet.
+ Die Suche nach Dokumenten in einem gewissen Zeitraum funktionierte nicht.
+ Wurden Resultate nach Datum sortiert, so konnten ihnen keine weitere Suchbegrif
+fe hinzugefügt werden.
+ Es hat sich herausgestellt, das Google bei weitem nicht so deterministisch
+ funktioniert wie vielleicht angenommen wird.
+ Die Lehre, die daraus zu ziehen ist, ist dass keine Google-Suchanfrage
+ wie die andere ist und jede speziell auf das momentane Suchbedürfnis angepasst
+ werden muss.
+ Die Leistung der Google Such-Engine steht dabei natürlich ausser Frage.
+ Die erweiterten Operatoren von Google bieten dabei die beste Möglichkeit,
+ Suchen beliebig genau zu spezifizieren bzw.
+ Suchresultate zu verbessern.
+ Sie wurden daher auch in dieser Arbeit zur Verbesserung der Suchresultate
+ gebraucht.
+ Man muss sich einfach bewusst sein, dass sie nicht immer funktionieren.
+ In dieser Arbeit hat sich zudem gezeigt, was für ein mächtiges Werkzeug
+ Lucene ist.
+ Da bei Lucene im Gegensatz zu Google auch der Index selbst erstellt werden
+ kann, kann man bereits bei diesem Punkt Einfluss auf die spätere Suche
+ bzw.
+ Suchresultate üben.
+ Kennt man die Dokumente sowie Suchbedürfnisse, die später gestellt werden,
+ ist Lucene ein ausgezeichnetes Tool um eine massgeschneiderte Lösung für
+ ein 
+\begin_inset Quotes eld
+\end_inset
+
+Such-Problem
+\begin_inset Quotes erd
+\end_inset
+
+ zu erstellen.
+ Die begrenzte Zeit, die für dieses Projekt investiert werden konnte, reichte
+ jedoch nur dafür aus, die Grundlagen von Lucene kennenzulernen.
+ Es wurde evaluiert, dass die Suchresultate, die mit Lucene erzielt wurden,
+ nicht weiter verbessert werden konnten, was sich im Verlauf der Arbeit
+ dann auch bestätigt hat.
+ Wegen der geringen Erfahrung mit Lucene kann dies jedoch nicht mit abschliessen
+der Sicherheit gesagt werden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "lit/ir"
+options "bibtotoc,plain"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
