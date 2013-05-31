@@ -1,0 +1,57 @@
+from scrapy.contrib.spiders import CrawlSpider, Rule
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor
+from scrapy.selector import HtmlXPathSelector
+import re
+
+i = 1
+
+class TASpider(CrawlSpider):
+    name = "ta"
+    allowed_domains = ["tagesanzeiger.ch"]
+    start_urls = [
+        "http://www.tagesanzeiger.ch/schweiz"
+    ]
+    
+    rules = [
+    	Rule(SgmlLinkExtractor(allow=('/schweiz/standard/.*',), deny=('.*\?comments=.*',' .*\?dossier_id\=.*' , '.*/print.html', '.*/s.html', '.*\?track=',)), 'parse_item', follow=True)
+    ]
+    
+    def parse_item(self, response):
+    	#testfile = open('testfile.txt','a+')
+    	#self.log('Hi, this is an item page! %s' % response.url)
+        #filename = response.url.split("/")[-2]
+        #open(filename, 'wb').write(response.body)
+        #testfile.write(response.url + "\n")
+        #testfile.close
+        
+        hxs = HtmlXPathSelector(response)
+        filename = "ta/" + hxs.select("//meta[@property='og:title']/@content").extract()[0] + ".ta"
+        doc = open(filename,'wb')
+        #doc.write(response.url + "\n")
+        #article_text = response.url + "\n"
+        article_text = hxs.select('//p[not(@class) and not(@style) and not(label) and (string-length() > 100)]').extract()
+        #article_text += hxs.select('//p[not(@class) and not(@style) and not(label) and (string-length() > 100)]').extract()[0]
+        #article_text += hxs.select('//p[not(@class) and not(@style) and not(a) and not(label) and (string-length() > 100)]').extract()[0]
+        
+        #the purpose of this regex expression is to remove all child html tags like <p>, <br> or <a>.. quotes like <<this>> shouldn't be removed though
+        #so the regex reads as follows: first sign anything but <, exactly one <, any number of symbols but not greedy, exactly one >, anything but another >
+        
+        article = ""
+        
+        for p in article_text:
+        	article += p + "\n"
+        	#doc.write(p_text.encode('utf8'))
+        	# start of string re.sub("^<{1}.*?>{1}","",xxx)
+        	# end of string re.sub("[^<]<{1}.*?>{1}$","",z)
+        	
+        #article = re.sub("[^<]<{1}.*?>{1}[^>]","",article)
+		article = re.sub("[^<]<{1}.*?>{1}","",article)
+        article = re.sub("^<{1}.*?>{1}","",article)
+        
+        doc.write(article.encode('utf8'))
+        doc.close()
+        
+    def __del__(self):
+    	self.testfile.close()
+    	
+    	#site:tagesanzeiger.ch/schweiz/standard -inurl:comments -inurl:html
